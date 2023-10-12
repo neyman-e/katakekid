@@ -1,9 +1,13 @@
-require "1_mine"
+require "3_recursive"
 
-describe "My persistence" do
+describe "Recursive persistence" do
 
   it "Should return 0 when you pass it 4" do
     expect(persistence(4)).to eq(0)
+  end
+
+  it "Should return 1 when you pass it 11" do
+    expect(persistence(11)).to eq(1)
   end
 
   it "Should return 3 when you pass it 39" do

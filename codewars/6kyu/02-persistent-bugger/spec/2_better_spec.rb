@@ -1,6 +1,6 @@
-require "1_mine"
+require "2_better"
 
-describe "My persistence" do
+describe "Better persistence" do
 
   it "Should return 0 when you pass it 4" do
     expect(persistence(4)).to eq(0)
