@@ -23,6 +23,8 @@ def shift_number(encrypted_word, decrypted_word)
   shift = 0
   if first_decrypted_char.ord < first_encrypted_char.ord
     shift = first_encrypted_char.ord - first_decrypted_char.ord
+  elsif first_decrypted_char.ord == first_encrypted_char.ord
+    shift = 0
   else
     shift = 26 + first_encrypted_char.ord - first_decrypted_char.ord
   end
