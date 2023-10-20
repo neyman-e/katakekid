@@ -4,9 +4,9 @@ SEPARATE_ENCRYPTED_WORDS = ["DAM", "Mjqqt", "btwqi", "Gur", "dhvpx", "oebja", "s
                             "whzcf", "bire", "gur", "ynml", "qbt"].to_set
 WORDS = ["wtf", "hello", "world", "the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"].sort.to_set
 
-def shift_characters(phrase, shift)
-  phrase.chars.map do |char|
-    # We need to always count in the same direction
+def shift_characters(word, shift)
+  word.chars.map do |char|
+    # We need to always count in the same direction which is downwards (from 26 to 1 or 25 to 0)
     # Thus, we need to check if the character ordinal will need to go from a'z ordinal, 97 to z's ordinal, 122
     # This ordinals correspond to the letters' positions in the alphabet which are
     # 0-a (97), 1-b (98), 2-c (99), 3-d (100), ..., 24-y (121), 25-z (122)
