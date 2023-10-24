@@ -1,3 +1,3 @@
 def solution(string)
-  # complete the function
+  string.gsub(/[A-Z]/) { |match| ' ' + match}
 end
