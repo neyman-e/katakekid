@@ -42,8 +42,9 @@ if File.exist?(input_file)
   input = File.open(input_file)
   input.each do |game|
     objectified_game = read_game(game)
+    p objectified_game
     possible_games << objectified_game['game'] if game_possible?(objectified_game)
   end
 end
 
-puts possible_games.sum
+puts "Puzzle 1: The sum of the possible games' indexes is #{possible_games.sum}"
