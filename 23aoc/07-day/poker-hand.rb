@@ -58,13 +58,13 @@ class PokerHand
   end
 
   def check_hand_strength_jokers
-    hand_values = @counted_cards.values
-    return 'five_of_a_kind' if hand_values.include?(5) || (hand_values.max + @jokers_count) == 5
-    return 'four_of_a_kind' if hand_values.include?(4) || hand_values.max + @jokers_count == 4
-    return 'full_house' if hand_values.include?(3) && hand_values.include?(2)
-    return 'three_of_a_kind' if hand_values.include?(3) || hand_values.max + @jokers_count == 3
-    return 'two_pairs' if hand_values.count { |repetitions| repetitions == 2} == 2
-    return 'one_pair' if hand_values.include?(2) || hand_values.max + @jokers_count == 2
+    hand_values_no_j = (@counted_cards['J'] == 5 ? [0] : @counted_cards.select {|card, count| !(card=='J')}.values)
+    return 'five_of_a_kind' if hand_values_no_j.include?(5) || (hand_values_no_j.max + @jokers_count) >= 5
+    return 'four_of_a_kind' if hand_values_no_j.include?(4) || hand_values_no_j.max + @jokers_count == 4
+    return 'full_house' if hand_values_no_j.include?(3) && hand_values_no_j.include?(2) || (hand_values_no_j.count { |repetitions| repetitions == 2} == 2 && @jokers_count == 1)
+    return 'three_of_a_kind' if hand_values_no_j.include?(3) || hand_values_no_j.max + @jokers_count == 3
+    return 'two_pairs' if hand_values_no_j.count { |repetitions| repetitions == 2} == 2
+    return 'one_pair' if hand_values_no_j.include?(2) || hand_values_no_j.max + @jokers_count == 2
     return 'high_card'
   end
 

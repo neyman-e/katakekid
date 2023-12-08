@@ -36,7 +36,6 @@ total_app_time = Benchmark.measure do
   part2_app_time = Benchmark.measure do # Benchmark the time spent on part 1
     part2_hands_with_bids = HandsSet.new(input_filename, j_is_joker)
     puts "Total winnings for part 2 input (with J's being jokers) are: #{part2_hands_with_bids.winnings}"
-    puts part2_hands_with_bids.sorted_hands
   end
   puts "Part 2 #{(part2_app_time.real * 1000).truncate(6)}ms"
   puts
