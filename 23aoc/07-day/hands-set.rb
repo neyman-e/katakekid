@@ -4,8 +4,8 @@ require_relative 'poker-hand'
 class HandsSet
   attr_reader :sorted_hands, :hands_with_bids, :winnings
 
-  def initialize(filename)
-    hands_set = DataParser.new(filename)
+  def initialize(filename, j_is_joker)
+    hands_set = DataParser.new(filename, j_is_joker)
     @hands_with_bids = hands_set.hands_with_bids
     @sorted_hands = @hands_with_bids.sort_by { |hand_data| -hand_data[:hand_rank] }
     @winnings = 0
