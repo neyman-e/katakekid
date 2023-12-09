@@ -16,22 +16,26 @@ total_time = Benchmark.measure do
   # Generating an array with the next_values for every history
   next_values = []
   histories.each { |history| next_values << history.next_value}
-  previous_values = []
-  histories.each { |history| previous_values << history.previous_value}
 
-  puts "The sum of the next values for the example is: #{next_values.sum}"
-  puts "The sum of the previous values for the 'real' case data is: #{previous_values.sum}"
+    # Generating an array with the previous_values for every history
+    previous_values = []
+    histories.each { |history| previous_values << history.previous_value}
 
-  # Reading data from the input file
-  histories_input = DataReader.new(input_file)
+    puts "The sum of the next values for the example is: #{next_values.sum}"
+    puts "The sum of the previous values for the 'real' case data is: #{previous_values.sum}"
 
-  # Generating all base subsequences
-  histories = []
-  histories_input.list.each { |history| histories << History.new(history) }
+    # Reading data from the input file
+    histories_input = DataReader.new(input_file)
 
-  # Generating an array with the next_values for every history
-  next_values = []
-  histories.each { |history| next_values << history.next_value}
+    # Generating all base subsequences
+    histories = []
+    histories_input.list.each { |history| histories << History.new(history) }
+
+    # Generating an array with the next_values for every history
+    next_values = []
+    histories.each { |history| next_values << history.next_value}
+
+      # Generating an array with the previous_values for every history
   previous_values = []
   histories.each { |history| previous_values << history.previous_value}
 
