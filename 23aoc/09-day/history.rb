@@ -7,10 +7,15 @@ class History
       generate_subsequence
     end
     extrapolate_next_value
+    extrapolate_previous_value
   end
 
   def next_value
     @all_sequences[0].last
+  end
+
+  def previous_value
+    @all_sequences[0].first
   end
 
   private
@@ -34,6 +39,15 @@ class History
     (@all_sequences.size - 1).times do |index|
       inverse_index = @all_sequences.size - index - 2
       @all_sequences[inverse_index] << @all_sequences[inverse_index].last + @all_sequences[inverse_index + 1].last
+    end
+  end
+
+  def extrapolate_previous_value
+    @all_sequences.last.prepend(0)
+    (@all_sequences.size - 1).times do |index|
+      inverse_index = @all_sequences.size - index - 2
+      @all_sequences[inverse_index].prepend(@all_sequences[inverse_index].first - @all_sequences[inverse_index + 1].first)
+      # p @all_sequences
     end
   end
 end
