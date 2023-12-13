@@ -7,10 +7,12 @@ total_time = Benchmark.measure do
   filename = 'example.txt'
   # filename = 'input.txt'
   input = DataReader.new(filename)
-  # input.data.each { |pattern| p pattern ; puts}
+  pattern_notes = []
   input.data.each do |chunk|
     pattern = Pattern.new(chunk)
+    pattern_notes << pattern.result
   end
+  puts "The total sum of notes for every pattern is #{pattern_notes.sum}"
 end
 puts
 puts "The total time spent in the app was #{total_time.real * 1000}ms"
