@@ -11,7 +11,7 @@ class DataReader
     @springs_info = []
     @groups = []
     @data.each do |line|
-      @springs_info << line.split[0]
+      @springs_info << line.split[0].chars
       @groups << line.split[1].split(',').map(&:to_i)
     end
   end
